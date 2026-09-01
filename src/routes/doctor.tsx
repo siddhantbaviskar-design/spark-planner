@@ -60,10 +60,14 @@ function Doctor() {
         <PrimaryButton
           className="mt-4"
           onClick={() => {
-            if (!slot) return toast("Pick a time first");
+            if (!slot) {
+              toast("Pick a time first");
+              return;
+            }
             setBooked(true);
             toast.success("Consultation booked", { description: `${slot} · video call` });
           }}
+
         >
           {booked ? `Booked · ${slot}` : "Book consultation"}
         </PrimaryButton>

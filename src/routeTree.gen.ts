@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DoctorRouteImport } from './routes/doctor'
 import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as RoutinesRouteImport } from './routes/routines'
@@ -32,6 +33,11 @@ import { Route as TasksTaskIdRouteImport } from './routes/tasks.$taskId'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DoctorRoute = DoctorRouteImport.update({
+  id: '/doctor',
+  path: '/doctor',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InsightsRoute = InsightsRouteImport.update({
@@ -127,6 +133,7 @@ const TasksTaskIdRoute = TasksTaskIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/doctor': typeof DoctorRoute
   '/insights': typeof InsightsRoute
   '/onboarding': typeof OnboardingRoute
   '/routines': typeof RoutinesRoute
@@ -148,6 +155,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/doctor': typeof DoctorRoute
   '/insights': typeof InsightsRoute
   '/onboarding': typeof OnboardingRoute
   '/routines': typeof RoutinesRoute
@@ -170,6 +178,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/doctor': typeof DoctorRoute
   '/insights': typeof InsightsRoute
   '/onboarding': typeof OnboardingRoute
   '/routines': typeof RoutinesRoute
@@ -193,6 +202,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/doctor'
     | '/insights'
     | '/onboarding'
     | '/routines'
@@ -214,6 +224,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/doctor'
     | '/insights'
     | '/onboarding'
     | '/routines'
@@ -235,6 +246,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/doctor'
     | '/insights'
     | '/onboarding'
     | '/routines'
@@ -257,6 +269,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DoctorRoute: typeof DoctorRoute
   InsightsRoute: typeof InsightsRoute
   OnboardingRoute: typeof OnboardingRoute
   RoutinesRoute: typeof RoutinesRoute
@@ -284,6 +297,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/doctor': {
+      id: '/doctor'
+      path: '/doctor'
+      fullPath: '/doctor'
+      preLoaderRoute: typeof DoctorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/insights': {
@@ -417,6 +437,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DoctorRoute: DoctorRoute,
   InsightsRoute: InsightsRoute,
   OnboardingRoute: OnboardingRoute,
   RoutinesRoute: RoutinesRoute,
