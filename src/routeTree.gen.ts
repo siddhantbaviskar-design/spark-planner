@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as TodayRouteImport } from './routes/today'
+import { Route as FocusIndexRouteImport } from './routes/focus.index'
 import { Route as TasksIndexRouteImport } from './routes/tasks.index'
 import { Route as TasksTaskIdRouteImport } from './routes/tasks.$taskId'
 
@@ -30,6 +31,11 @@ const TodayRoute = TodayRouteImport.update({
   path: '/today',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FocusIndexRoute = FocusIndexRouteImport.update({
+  id: '/focus/',
+  path: '/focus/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TasksIndexRoute = TasksIndexRouteImport.update({
   id: '/tasks/',
   path: '/tasks/',
@@ -46,6 +52,7 @@ export interface FileRoutesByFullPath {
   '/onboarding': typeof OnboardingRoute
   '/today': typeof TodayRoute
   '/tasks/$taskId': typeof TasksTaskIdRoute
+  '/focus/': typeof FocusIndexRoute
   '/tasks/': typeof TasksIndexRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +60,7 @@ export interface FileRoutesByTo {
   '/onboarding': typeof OnboardingRoute
   '/today': typeof TodayRoute
   '/tasks/$taskId': typeof TasksTaskIdRoute
+  '/focus': typeof FocusIndexRoute
   '/tasks': typeof TasksIndexRoute
 }
 export interface FileRoutesById {
@@ -61,14 +69,23 @@ export interface FileRoutesById {
   '/onboarding': typeof OnboardingRoute
   '/today': typeof TodayRoute
   '/tasks/$taskId': typeof TasksTaskIdRoute
+  '/focus/': typeof FocusIndexRoute
   '/tasks/': typeof TasksIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/onboarding' | '/today' | '/tasks/$taskId' | '/tasks/'
+  fullPaths:
+    '/' | '/onboarding' | '/today' | '/tasks/$taskId' | '/focus/' | '/tasks/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/onboarding' | '/today' | '/tasks/$taskId' | '/tasks'
-  id: '__root__' | '/' | '/onboarding' | '/today' | '/tasks/$taskId' | '/tasks/'
+  to: '/' | '/onboarding' | '/today' | '/tasks/$taskId' | '/focus' | '/tasks'
+  id:
+    | '__root__'
+    | '/'
+    | '/onboarding'
+    | '/today'
+    | '/tasks/$taskId'
+    | '/focus/'
+    | '/tasks/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -76,6 +93,7 @@ export interface RootRouteChildren {
   OnboardingRoute: typeof OnboardingRoute
   TodayRoute: typeof TodayRoute
   TasksTaskIdRoute: typeof TasksTaskIdRoute
+  FocusIndexRoute: typeof FocusIndexRoute
   TasksIndexRoute: typeof TasksIndexRoute
 }
 
@@ -102,6 +120,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TodayRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/focus/': {
+      id: '/focus/'
+      path: '/focus'
+      fullPath: '/focus/'
+      preLoaderRoute: typeof FocusIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tasks/': {
       id: '/tasks/'
       path: '/tasks'
@@ -124,6 +149,7 @@ const rootRouteChildren: RootRouteChildren = {
   OnboardingRoute: OnboardingRoute,
   TodayRoute: TodayRoute,
   TasksTaskIdRoute: TasksTaskIdRoute,
+  FocusIndexRoute: FocusIndexRoute,
   TasksIndexRoute: TasksIndexRoute,
 }
 export const routeTree = rootRouteImport
