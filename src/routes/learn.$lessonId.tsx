@@ -44,7 +44,7 @@ function LessonPage() {
     );
   }
 
-  const nextLesson = lessons[(lessons.findIndex((l) => l.id === lesson.id) + 1) % lessons.length];
+  const nextLesson = lessons[(lessons.findIndex((l) => l.id === lesson.id) + 1) % lessons.length] ?? lessons[0]!;
   const nextLocked = nextLesson.premium && !subscribed;
   const done = progress >= 100 || watched.includes(lesson.id);
 

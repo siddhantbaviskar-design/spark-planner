@@ -25,7 +25,7 @@ function RoutinesPage() {
   if (active) {
     const isLast = step >= active.steps.length - 1;
     return (
-      <PhoneShell hideNav>
+      <PhoneShell bare>
         <ScreenHeader
           title={active.title}
           subtitle={`Step ${step + 1} of ${active.steps.length}`}
