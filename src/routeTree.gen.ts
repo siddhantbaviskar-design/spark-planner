@@ -14,6 +14,7 @@ import { Route as DoctorRouteImport } from './routes/doctor'
 import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
+import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as RoutinesRouteImport } from './routes/routines'
 import { Route as TodayRouteImport } from './routes/today'
 import { Route as AssessmentIndexRouteImport } from './routes/assessment.index'
@@ -54,6 +55,11 @@ const NotificationsRoute = NotificationsRouteImport.update({
 const OnboardingRoute = OnboardingRouteImport.update({
   id: '/onboarding',
   path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RoutinesRoute = RoutinesRouteImport.update({
@@ -143,6 +149,7 @@ export interface FileRoutesByFullPath {
   '/insights': typeof InsightsRoute
   '/notifications': typeof NotificationsRoute
   '/onboarding': typeof OnboardingRoute
+  '/profile': typeof ProfileRoute
   '/routines': typeof RoutinesRoute
   '/today': typeof TodayRoute
   '/assessment/$assessmentId': typeof AssessmentAssessmentIdRoute
@@ -166,6 +173,7 @@ export interface FileRoutesByTo {
   '/insights': typeof InsightsRoute
   '/notifications': typeof NotificationsRoute
   '/onboarding': typeof OnboardingRoute
+  '/profile': typeof ProfileRoute
   '/routines': typeof RoutinesRoute
   '/today': typeof TodayRoute
   '/assessment/$assessmentId': typeof AssessmentAssessmentIdRoute
@@ -190,6 +198,7 @@ export interface FileRoutesById {
   '/insights': typeof InsightsRoute
   '/notifications': typeof NotificationsRoute
   '/onboarding': typeof OnboardingRoute
+  '/profile': typeof ProfileRoute
   '/routines': typeof RoutinesRoute
   '/today': typeof TodayRoute
   '/assessment/$assessmentId': typeof AssessmentAssessmentIdRoute
@@ -215,6 +224,7 @@ export interface FileRouteTypes {
     | '/insights'
     | '/notifications'
     | '/onboarding'
+    | '/profile'
     | '/routines'
     | '/today'
     | '/assessment/$assessmentId'
@@ -238,6 +248,7 @@ export interface FileRouteTypes {
     | '/insights'
     | '/notifications'
     | '/onboarding'
+    | '/profile'
     | '/routines'
     | '/today'
     | '/assessment/$assessmentId'
@@ -261,6 +272,7 @@ export interface FileRouteTypes {
     | '/insights'
     | '/notifications'
     | '/onboarding'
+    | '/profile'
     | '/routines'
     | '/today'
     | '/assessment/$assessmentId'
@@ -285,6 +297,7 @@ export interface RootRouteChildren {
   InsightsRoute: typeof InsightsRoute
   NotificationsRoute: typeof NotificationsRoute
   OnboardingRoute: typeof OnboardingRoute
+  ProfileRoute: typeof ProfileRoute
   RoutinesRoute: typeof RoutinesRoute
   TodayRoute: typeof TodayRoute
   AssessmentAssessmentIdRoute: typeof AssessmentAssessmentIdRoute
@@ -338,6 +351,13 @@ declare module '@tanstack/react-router' {
       path: '/onboarding'
       fullPath: '/onboarding'
       preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/routines': {
@@ -461,6 +481,7 @@ const rootRouteChildren: RootRouteChildren = {
   InsightsRoute: InsightsRoute,
   NotificationsRoute: NotificationsRoute,
   OnboardingRoute: OnboardingRoute,
+  ProfileRoute: ProfileRoute,
   RoutinesRoute: RoutinesRoute,
   TodayRoute: TodayRoute,
   AssessmentAssessmentIdRoute: AssessmentAssessmentIdRoute,
