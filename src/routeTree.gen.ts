@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as TodayRouteImport } from './routes/today'
+import { Route as AssessmentIndexRouteImport } from './routes/assessment.index'
 import { Route as FocusIndexRouteImport } from './routes/focus.index'
 import { Route as FocusResetRouteImport } from './routes/focus.reset'
 import { Route as FocusSessionRouteImport } from './routes/focus.session'
@@ -31,6 +32,11 @@ const OnboardingRoute = OnboardingRouteImport.update({
 const TodayRoute = TodayRouteImport.update({
   id: '/today',
   path: '/today',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AssessmentIndexRoute = AssessmentIndexRouteImport.update({
+  id: '/assessment/',
+  path: '/assessment/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FocusIndexRoute = FocusIndexRouteImport.update({
@@ -66,6 +72,7 @@ export interface FileRoutesByFullPath {
   '/focus/reset': typeof FocusResetRoute
   '/focus/session': typeof FocusSessionRoute
   '/tasks/$taskId': typeof TasksTaskIdRoute
+  '/assessment/': typeof AssessmentIndexRoute
   '/focus/': typeof FocusIndexRoute
   '/tasks/': typeof TasksIndexRoute
 }
@@ -76,6 +83,7 @@ export interface FileRoutesByTo {
   '/focus/reset': typeof FocusResetRoute
   '/focus/session': typeof FocusSessionRoute
   '/tasks/$taskId': typeof TasksTaskIdRoute
+  '/assessment': typeof AssessmentIndexRoute
   '/focus': typeof FocusIndexRoute
   '/tasks': typeof TasksIndexRoute
 }
@@ -87,6 +95,7 @@ export interface FileRoutesById {
   '/focus/reset': typeof FocusResetRoute
   '/focus/session': typeof FocusSessionRoute
   '/tasks/$taskId': typeof TasksTaskIdRoute
+  '/assessment/': typeof AssessmentIndexRoute
   '/focus/': typeof FocusIndexRoute
   '/tasks/': typeof TasksIndexRoute
 }
@@ -99,6 +108,7 @@ export interface FileRouteTypes {
     | '/focus/reset'
     | '/focus/session'
     | '/tasks/$taskId'
+    | '/assessment/'
     | '/focus/'
     | '/tasks/'
   fileRoutesByTo: FileRoutesByTo
@@ -109,6 +119,7 @@ export interface FileRouteTypes {
     | '/focus/reset'
     | '/focus/session'
     | '/tasks/$taskId'
+    | '/assessment'
     | '/focus'
     | '/tasks'
   id:
@@ -119,6 +130,7 @@ export interface FileRouteTypes {
     | '/focus/reset'
     | '/focus/session'
     | '/tasks/$taskId'
+    | '/assessment/'
     | '/focus/'
     | '/tasks/'
   fileRoutesById: FileRoutesById
@@ -130,6 +142,7 @@ export interface RootRouteChildren {
   FocusResetRoute: typeof FocusResetRoute
   FocusSessionRoute: typeof FocusSessionRoute
   TasksTaskIdRoute: typeof TasksTaskIdRoute
+  AssessmentIndexRoute: typeof AssessmentIndexRoute
   FocusIndexRoute: typeof FocusIndexRoute
   TasksIndexRoute: typeof TasksIndexRoute
 }
@@ -155,6 +168,13 @@ declare module '@tanstack/react-router' {
       path: '/today'
       fullPath: '/today'
       preLoaderRoute: typeof TodayRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assessment/': {
+      id: '/assessment/'
+      path: '/assessment'
+      fullPath: '/assessment/'
+      preLoaderRoute: typeof AssessmentIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/focus/': {
@@ -202,6 +222,7 @@ const rootRouteChildren: RootRouteChildren = {
   FocusResetRoute: FocusResetRoute,
   FocusSessionRoute: FocusSessionRoute,
   TasksTaskIdRoute: TasksTaskIdRoute,
+  AssessmentIndexRoute: AssessmentIndexRoute,
   FocusIndexRoute: FocusIndexRoute,
   TasksIndexRoute: TasksIndexRoute,
 }
