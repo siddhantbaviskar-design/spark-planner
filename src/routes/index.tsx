@@ -1,24 +1,50 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { Brain } from "lucide-react";
+import { useEffect } from "react";
+import { useAxon } from "@/lib/axon-store";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: "AXONADHD — Your calm ADHD health companion" },
+      {
+        name: "description",
+        content:
+          "AXONADHD helps you manage routines, medication, focus sessions, assessments and learning — one calm step at a time.",
+      },
+      { property: "og:title", content: "AXONADHD — Your calm ADHD health companion" },
+      {
+        property: "og:description",
+        content: "Track, understand, improve and connect. A calm ADHD companion that makes today manageable.",
+      },
+    ],
+  }),
+  component: Splash,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+function Splash() {
+  const { onboarded } = useAxon();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const t = setTimeout(() => {
+      navigate({ to: onboarded ? "/today" : "/onboarding" });
+    }, 2100);
+    return () => clearTimeout(t);
+  }, [navigate, onboarded]);
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="flex min-h-screen items-center justify-center bg-gradient-primary px-6">
+      <div className="animate-rise flex flex-col items-center text-center">
+        <div className="animate-breathe flex h-24 w-24 items-center justify-center rounded-[2rem] bg-primary-foreground/15 ring-1 ring-primary-foreground/25 backdrop-blur">
+          <Brain className="h-11 w-11 text-primary-foreground" />
+        </div>
+        <h1 className="mt-7 text-3xl font-semibold tracking-tight text-primary-foreground">AXONADHD</h1>
+        <p className="mt-2 text-sm text-primary-foreground/80">Make today manageable.</p>
+        <Link to="/onboarding" className="mt-10 text-xs font-medium text-primary-foreground/70 underline">
+          Skip
+        </Link>
+      </div>
     </div>
   );
 }
