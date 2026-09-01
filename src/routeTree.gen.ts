@@ -21,6 +21,7 @@ import { Route as FocusSessionRouteImport } from './routes/focus.session'
 import { Route as HealthIndexRouteImport } from './routes/health.index'
 import { Route as HealthExerciseRouteImport } from './routes/health.exercise'
 import { Route as HealthMedicationRouteImport } from './routes/health.medication'
+import { Route as HealthMoodRouteImport } from './routes/health.mood'
 import { Route as HealthVitalsRouteImport } from './routes/health.vitals'
 import { Route as LearnIndexRouteImport } from './routes/learn.index'
 import { Route as LearnLessonIdRouteImport } from './routes/learn.$lessonId'
@@ -87,6 +88,11 @@ const HealthMedicationRoute = HealthMedicationRouteImport.update({
   path: '/health/medication',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HealthMoodRoute = HealthMoodRouteImport.update({
+  id: '/health/mood',
+  path: '/health/mood',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HealthVitalsRoute = HealthVitalsRouteImport.update({
   id: '/health/vitals',
   path: '/health/vitals',
@@ -123,6 +129,7 @@ export interface FileRoutesByFullPath {
   '/focus/session': typeof FocusSessionRoute
   '/health/exercise': typeof HealthExerciseRoute
   '/health/medication': typeof HealthMedicationRoute
+  '/health/mood': typeof HealthMoodRoute
   '/health/vitals': typeof HealthVitalsRoute
   '/learn/$lessonId': typeof LearnLessonIdRoute
   '/tasks/$taskId': typeof TasksTaskIdRoute
@@ -142,6 +149,7 @@ export interface FileRoutesByTo {
   '/focus/session': typeof FocusSessionRoute
   '/health/exercise': typeof HealthExerciseRoute
   '/health/medication': typeof HealthMedicationRoute
+  '/health/mood': typeof HealthMoodRoute
   '/health/vitals': typeof HealthVitalsRoute
   '/learn/$lessonId': typeof LearnLessonIdRoute
   '/tasks/$taskId': typeof TasksTaskIdRoute
@@ -162,6 +170,7 @@ export interface FileRoutesById {
   '/focus/session': typeof FocusSessionRoute
   '/health/exercise': typeof HealthExerciseRoute
   '/health/medication': typeof HealthMedicationRoute
+  '/health/mood': typeof HealthMoodRoute
   '/health/vitals': typeof HealthVitalsRoute
   '/learn/$lessonId': typeof LearnLessonIdRoute
   '/tasks/$taskId': typeof TasksTaskIdRoute
@@ -183,6 +192,7 @@ export interface FileRouteTypes {
     | '/focus/session'
     | '/health/exercise'
     | '/health/medication'
+    | '/health/mood'
     | '/health/vitals'
     | '/learn/$lessonId'
     | '/tasks/$taskId'
@@ -202,6 +212,7 @@ export interface FileRouteTypes {
     | '/focus/session'
     | '/health/exercise'
     | '/health/medication'
+    | '/health/mood'
     | '/health/vitals'
     | '/learn/$lessonId'
     | '/tasks/$taskId'
@@ -221,6 +232,7 @@ export interface FileRouteTypes {
     | '/focus/session'
     | '/health/exercise'
     | '/health/medication'
+    | '/health/mood'
     | '/health/vitals'
     | '/learn/$lessonId'
     | '/tasks/$taskId'
@@ -241,6 +253,7 @@ export interface RootRouteChildren {
   FocusSessionRoute: typeof FocusSessionRoute
   HealthExerciseRoute: typeof HealthExerciseRoute
   HealthMedicationRoute: typeof HealthMedicationRoute
+  HealthMoodRoute: typeof HealthMoodRoute
   HealthVitalsRoute: typeof HealthVitalsRoute
   LearnLessonIdRoute: typeof LearnLessonIdRoute
   TasksTaskIdRoute: typeof TasksTaskIdRoute
@@ -337,6 +350,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HealthMedicationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/health/mood': {
+      id: '/health/mood'
+      path: '/health/mood'
+      fullPath: '/health/mood'
+      preLoaderRoute: typeof HealthMoodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/health/vitals': {
       id: '/health/vitals'
       path: '/health/vitals'
@@ -385,6 +405,7 @@ const rootRouteChildren: RootRouteChildren = {
   FocusSessionRoute: FocusSessionRoute,
   HealthExerciseRoute: HealthExerciseRoute,
   HealthMedicationRoute: HealthMedicationRoute,
+  HealthMoodRoute: HealthMoodRoute,
   HealthVitalsRoute: HealthVitalsRoute,
   LearnLessonIdRoute: LearnLessonIdRoute,
   TasksTaskIdRoute: TasksTaskIdRoute,
