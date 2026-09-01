@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DoctorRouteImport } from './routes/doctor'
 import { Route as InsightsRouteImport } from './routes/insights'
+import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as RoutinesRouteImport } from './routes/routines'
 import { Route as TodayRouteImport } from './routes/today'
@@ -43,6 +44,11 @@ const DoctorRoute = DoctorRouteImport.update({
 const InsightsRoute = InsightsRouteImport.update({
   id: '/insights',
   path: '/insights',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OnboardingRoute = OnboardingRouteImport.update({
@@ -135,6 +141,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/doctor': typeof DoctorRoute
   '/insights': typeof InsightsRoute
+  '/notifications': typeof NotificationsRoute
   '/onboarding': typeof OnboardingRoute
   '/routines': typeof RoutinesRoute
   '/today': typeof TodayRoute
@@ -157,6 +164,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/doctor': typeof DoctorRoute
   '/insights': typeof InsightsRoute
+  '/notifications': typeof NotificationsRoute
   '/onboarding': typeof OnboardingRoute
   '/routines': typeof RoutinesRoute
   '/today': typeof TodayRoute
@@ -180,6 +188,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/doctor': typeof DoctorRoute
   '/insights': typeof InsightsRoute
+  '/notifications': typeof NotificationsRoute
   '/onboarding': typeof OnboardingRoute
   '/routines': typeof RoutinesRoute
   '/today': typeof TodayRoute
@@ -204,6 +213,7 @@ export interface FileRouteTypes {
     | '/'
     | '/doctor'
     | '/insights'
+    | '/notifications'
     | '/onboarding'
     | '/routines'
     | '/today'
@@ -226,6 +236,7 @@ export interface FileRouteTypes {
     | '/'
     | '/doctor'
     | '/insights'
+    | '/notifications'
     | '/onboarding'
     | '/routines'
     | '/today'
@@ -248,6 +259,7 @@ export interface FileRouteTypes {
     | '/'
     | '/doctor'
     | '/insights'
+    | '/notifications'
     | '/onboarding'
     | '/routines'
     | '/today'
@@ -271,6 +283,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DoctorRoute: typeof DoctorRoute
   InsightsRoute: typeof InsightsRoute
+  NotificationsRoute: typeof NotificationsRoute
   OnboardingRoute: typeof OnboardingRoute
   RoutinesRoute: typeof RoutinesRoute
   TodayRoute: typeof TodayRoute
@@ -311,6 +324,13 @@ declare module '@tanstack/react-router' {
       path: '/insights'
       fullPath: '/insights'
       preLoaderRoute: typeof InsightsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/onboarding': {
@@ -439,6 +459,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DoctorRoute: DoctorRoute,
   InsightsRoute: InsightsRoute,
+  NotificationsRoute: NotificationsRoute,
   OnboardingRoute: OnboardingRoute,
   RoutinesRoute: RoutinesRoute,
   TodayRoute: TodayRoute,
