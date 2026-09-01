@@ -19,6 +19,7 @@ import { Route as FocusIndexRouteImport } from './routes/focus.index'
 import { Route as FocusResetRouteImport } from './routes/focus.reset'
 import { Route as FocusSessionRouteImport } from './routes/focus.session'
 import { Route as HealthIndexRouteImport } from './routes/health.index'
+import { Route as HealthVitalsRouteImport } from './routes/health.vitals'
 import { Route as LearnIndexRouteImport } from './routes/learn.index'
 import { Route as LearnLessonIdRouteImport } from './routes/learn.$lessonId'
 import { Route as TasksIndexRouteImport } from './routes/tasks.index'
@@ -74,6 +75,11 @@ const HealthIndexRoute = HealthIndexRouteImport.update({
   path: '/health/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HealthVitalsRoute = HealthVitalsRouteImport.update({
+  id: '/health/vitals',
+  path: '/health/vitals',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LearnIndexRoute = LearnIndexRouteImport.update({
   id: '/learn/',
   path: '/learn/',
@@ -103,6 +109,7 @@ export interface FileRoutesByFullPath {
   '/assessment/$assessmentId': typeof AssessmentAssessmentIdRoute
   '/focus/reset': typeof FocusResetRoute
   '/focus/session': typeof FocusSessionRoute
+  '/health/vitals': typeof HealthVitalsRoute
   '/learn/$lessonId': typeof LearnLessonIdRoute
   '/tasks/$taskId': typeof TasksTaskIdRoute
   '/assessment/': typeof AssessmentIndexRoute
@@ -119,6 +126,7 @@ export interface FileRoutesByTo {
   '/assessment/$assessmentId': typeof AssessmentAssessmentIdRoute
   '/focus/reset': typeof FocusResetRoute
   '/focus/session': typeof FocusSessionRoute
+  '/health/vitals': typeof HealthVitalsRoute
   '/learn/$lessonId': typeof LearnLessonIdRoute
   '/tasks/$taskId': typeof TasksTaskIdRoute
   '/assessment': typeof AssessmentIndexRoute
@@ -136,6 +144,7 @@ export interface FileRoutesById {
   '/assessment/$assessmentId': typeof AssessmentAssessmentIdRoute
   '/focus/reset': typeof FocusResetRoute
   '/focus/session': typeof FocusSessionRoute
+  '/health/vitals': typeof HealthVitalsRoute
   '/learn/$lessonId': typeof LearnLessonIdRoute
   '/tasks/$taskId': typeof TasksTaskIdRoute
   '/assessment/': typeof AssessmentIndexRoute
@@ -154,6 +163,7 @@ export interface FileRouteTypes {
     | '/assessment/$assessmentId'
     | '/focus/reset'
     | '/focus/session'
+    | '/health/vitals'
     | '/learn/$lessonId'
     | '/tasks/$taskId'
     | '/assessment/'
@@ -170,6 +180,7 @@ export interface FileRouteTypes {
     | '/assessment/$assessmentId'
     | '/focus/reset'
     | '/focus/session'
+    | '/health/vitals'
     | '/learn/$lessonId'
     | '/tasks/$taskId'
     | '/assessment'
@@ -186,6 +197,7 @@ export interface FileRouteTypes {
     | '/assessment/$assessmentId'
     | '/focus/reset'
     | '/focus/session'
+    | '/health/vitals'
     | '/learn/$lessonId'
     | '/tasks/$taskId'
     | '/assessment/'
@@ -203,6 +215,7 @@ export interface RootRouteChildren {
   AssessmentAssessmentIdRoute: typeof AssessmentAssessmentIdRoute
   FocusResetRoute: typeof FocusResetRoute
   FocusSessionRoute: typeof FocusSessionRoute
+  HealthVitalsRoute: typeof HealthVitalsRoute
   LearnLessonIdRoute: typeof LearnLessonIdRoute
   TasksTaskIdRoute: typeof TasksTaskIdRoute
   AssessmentIndexRoute: typeof AssessmentIndexRoute
@@ -284,6 +297,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HealthIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/health/vitals': {
+      id: '/health/vitals'
+      path: '/health/vitals'
+      fullPath: '/health/vitals'
+      preLoaderRoute: typeof HealthVitalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/learn/': {
       id: '/learn/'
       path: '/learn'
@@ -323,6 +343,7 @@ const rootRouteChildren: RootRouteChildren = {
   AssessmentAssessmentIdRoute: AssessmentAssessmentIdRoute,
   FocusResetRoute: FocusResetRoute,
   FocusSessionRoute: FocusSessionRoute,
+  HealthVitalsRoute: HealthVitalsRoute,
   LearnLessonIdRoute: LearnLessonIdRoute,
   TasksTaskIdRoute: TasksTaskIdRoute,
   AssessmentIndexRoute: AssessmentIndexRoute,
