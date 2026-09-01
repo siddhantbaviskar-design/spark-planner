@@ -150,19 +150,31 @@ export function ScreenHeader({
   subtitle,
   right,
   back,
+  onBack,
 }: {
   title: string;
   subtitle?: string;
   right?: ReactNode;
   back?: string;
+  onBack?: () => void;
 }) {
   return (
     <header className="px-5 pb-4 pt-8">
-      {back && (
-        <Link to={back} className="mb-3 inline-flex items-center gap-1 text-sm font-medium text-muted-foreground">
+      {onBack ? (
+        <button
+          onClick={onBack}
+          className="mb-3 inline-flex items-center gap-1 text-sm font-medium text-muted-foreground"
+        >
           ← Back
-        </Link>
+        </button>
+      ) : (
+        back && (
+          <Link to={back} className="mb-3 inline-flex items-center gap-1 text-sm font-medium text-muted-foreground">
+            ← Back
+          </Link>
+        )
       )}
+
       <div className="flex items-start justify-between gap-3">
         <div>
           <h1 className="text-[26px] font-semibold leading-tight tracking-tight">{title}</h1>
