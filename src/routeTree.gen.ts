@@ -10,33 +10,310 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DoctorRouteImport } from './routes/doctor'
+import { Route as InsightsRouteImport } from './routes/insights'
+import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as RoutinesRouteImport } from './routes/routines'
+import { Route as TodayRouteImport } from './routes/today'
+import { Route as AssessmentIndexRouteImport } from './routes/assessment.index'
+import { Route as AssessmentAssessmentIdRouteImport } from './routes/assessment.$assessmentId'
+import { Route as FocusIndexRouteImport } from './routes/focus.index'
+import { Route as FocusResetRouteImport } from './routes/focus.reset'
+import { Route as FocusSessionRouteImport } from './routes/focus.session'
+import { Route as HealthIndexRouteImport } from './routes/health.index'
+import { Route as HealthExerciseRouteImport } from './routes/health.exercise'
+import { Route as HealthMedicationRouteImport } from './routes/health.medication'
+import { Route as HealthMoodRouteImport } from './routes/health.mood'
+import { Route as HealthVitalsRouteImport } from './routes/health.vitals'
+import { Route as LearnIndexRouteImport } from './routes/learn.index'
+import { Route as LearnLessonIdRouteImport } from './routes/learn.$lessonId'
+import { Route as TasksIndexRouteImport } from './routes/tasks.index'
+import { Route as TasksTaskIdRouteImport } from './routes/tasks.$taskId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DoctorRoute = DoctorRouteImport.update({
+  id: '/doctor',
+  path: '/doctor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InsightsRoute = InsightsRouteImport.update({
+  id: '/insights',
+  path: '/insights',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RoutinesRoute = RoutinesRouteImport.update({
+  id: '/routines',
+  path: '/routines',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TodayRoute = TodayRouteImport.update({
+  id: '/today',
+  path: '/today',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AssessmentIndexRoute = AssessmentIndexRouteImport.update({
+  id: '/assessment/',
+  path: '/assessment/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AssessmentAssessmentIdRoute = AssessmentAssessmentIdRouteImport.update({
+  id: '/assessment/$assessmentId',
+  path: '/assessment/$assessmentId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FocusIndexRoute = FocusIndexRouteImport.update({
+  id: '/focus/',
+  path: '/focus/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FocusResetRoute = FocusResetRouteImport.update({
+  id: '/focus/reset',
+  path: '/focus/reset',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FocusSessionRoute = FocusSessionRouteImport.update({
+  id: '/focus/session',
+  path: '/focus/session',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HealthIndexRoute = HealthIndexRouteImport.update({
+  id: '/health/',
+  path: '/health/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HealthExerciseRoute = HealthExerciseRouteImport.update({
+  id: '/health/exercise',
+  path: '/health/exercise',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HealthMedicationRoute = HealthMedicationRouteImport.update({
+  id: '/health/medication',
+  path: '/health/medication',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HealthMoodRoute = HealthMoodRouteImport.update({
+  id: '/health/mood',
+  path: '/health/mood',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HealthVitalsRoute = HealthVitalsRouteImport.update({
+  id: '/health/vitals',
+  path: '/health/vitals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LearnIndexRoute = LearnIndexRouteImport.update({
+  id: '/learn/',
+  path: '/learn/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LearnLessonIdRoute = LearnLessonIdRouteImport.update({
+  id: '/learn/$lessonId',
+  path: '/learn/$lessonId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TasksIndexRoute = TasksIndexRouteImport.update({
+  id: '/tasks/',
+  path: '/tasks/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TasksTaskIdRoute = TasksTaskIdRouteImport.update({
+  id: '/tasks/$taskId',
+  path: '/tasks/$taskId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/doctor': typeof DoctorRoute
+  '/insights': typeof InsightsRoute
+  '/notifications': typeof NotificationsRoute
+  '/onboarding': typeof OnboardingRoute
+  '/profile': typeof ProfileRoute
+  '/routines': typeof RoutinesRoute
+  '/today': typeof TodayRoute
+  '/assessment/$assessmentId': typeof AssessmentAssessmentIdRoute
+  '/focus/reset': typeof FocusResetRoute
+  '/focus/session': typeof FocusSessionRoute
+  '/health/exercise': typeof HealthExerciseRoute
+  '/health/medication': typeof HealthMedicationRoute
+  '/health/mood': typeof HealthMoodRoute
+  '/health/vitals': typeof HealthVitalsRoute
+  '/learn/$lessonId': typeof LearnLessonIdRoute
+  '/tasks/$taskId': typeof TasksTaskIdRoute
+  '/assessment/': typeof AssessmentIndexRoute
+  '/focus/': typeof FocusIndexRoute
+  '/health/': typeof HealthIndexRoute
+  '/learn/': typeof LearnIndexRoute
+  '/tasks/': typeof TasksIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/doctor': typeof DoctorRoute
+  '/insights': typeof InsightsRoute
+  '/notifications': typeof NotificationsRoute
+  '/onboarding': typeof OnboardingRoute
+  '/profile': typeof ProfileRoute
+  '/routines': typeof RoutinesRoute
+  '/today': typeof TodayRoute
+  '/assessment/$assessmentId': typeof AssessmentAssessmentIdRoute
+  '/focus/reset': typeof FocusResetRoute
+  '/focus/session': typeof FocusSessionRoute
+  '/health/exercise': typeof HealthExerciseRoute
+  '/health/medication': typeof HealthMedicationRoute
+  '/health/mood': typeof HealthMoodRoute
+  '/health/vitals': typeof HealthVitalsRoute
+  '/learn/$lessonId': typeof LearnLessonIdRoute
+  '/tasks/$taskId': typeof TasksTaskIdRoute
+  '/assessment': typeof AssessmentIndexRoute
+  '/focus': typeof FocusIndexRoute
+  '/health': typeof HealthIndexRoute
+  '/learn': typeof LearnIndexRoute
+  '/tasks': typeof TasksIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/doctor': typeof DoctorRoute
+  '/insights': typeof InsightsRoute
+  '/notifications': typeof NotificationsRoute
+  '/onboarding': typeof OnboardingRoute
+  '/profile': typeof ProfileRoute
+  '/routines': typeof RoutinesRoute
+  '/today': typeof TodayRoute
+  '/assessment/$assessmentId': typeof AssessmentAssessmentIdRoute
+  '/focus/reset': typeof FocusResetRoute
+  '/focus/session': typeof FocusSessionRoute
+  '/health/exercise': typeof HealthExerciseRoute
+  '/health/medication': typeof HealthMedicationRoute
+  '/health/mood': typeof HealthMoodRoute
+  '/health/vitals': typeof HealthVitalsRoute
+  '/learn/$lessonId': typeof LearnLessonIdRoute
+  '/tasks/$taskId': typeof TasksTaskIdRoute
+  '/assessment/': typeof AssessmentIndexRoute
+  '/focus/': typeof FocusIndexRoute
+  '/health/': typeof HealthIndexRoute
+  '/learn/': typeof LearnIndexRoute
+  '/tasks/': typeof TasksIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/doctor'
+    | '/insights'
+    | '/notifications'
+    | '/onboarding'
+    | '/profile'
+    | '/routines'
+    | '/today'
+    | '/assessment/$assessmentId'
+    | '/focus/reset'
+    | '/focus/session'
+    | '/health/exercise'
+    | '/health/medication'
+    | '/health/mood'
+    | '/health/vitals'
+    | '/learn/$lessonId'
+    | '/tasks/$taskId'
+    | '/assessment/'
+    | '/focus/'
+    | '/health/'
+    | '/learn/'
+    | '/tasks/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/doctor'
+    | '/insights'
+    | '/notifications'
+    | '/onboarding'
+    | '/profile'
+    | '/routines'
+    | '/today'
+    | '/assessment/$assessmentId'
+    | '/focus/reset'
+    | '/focus/session'
+    | '/health/exercise'
+    | '/health/medication'
+    | '/health/mood'
+    | '/health/vitals'
+    | '/learn/$lessonId'
+    | '/tasks/$taskId'
+    | '/assessment'
+    | '/focus'
+    | '/health'
+    | '/learn'
+    | '/tasks'
+  id:
+    | '__root__'
+    | '/'
+    | '/doctor'
+    | '/insights'
+    | '/notifications'
+    | '/onboarding'
+    | '/profile'
+    | '/routines'
+    | '/today'
+    | '/assessment/$assessmentId'
+    | '/focus/reset'
+    | '/focus/session'
+    | '/health/exercise'
+    | '/health/medication'
+    | '/health/mood'
+    | '/health/vitals'
+    | '/learn/$lessonId'
+    | '/tasks/$taskId'
+    | '/assessment/'
+    | '/focus/'
+    | '/health/'
+    | '/learn/'
+    | '/tasks/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DoctorRoute: typeof DoctorRoute
+  InsightsRoute: typeof InsightsRoute
+  NotificationsRoute: typeof NotificationsRoute
+  OnboardingRoute: typeof OnboardingRoute
+  ProfileRoute: typeof ProfileRoute
+  RoutinesRoute: typeof RoutinesRoute
+  TodayRoute: typeof TodayRoute
+  AssessmentAssessmentIdRoute: typeof AssessmentAssessmentIdRoute
+  FocusResetRoute: typeof FocusResetRoute
+  FocusSessionRoute: typeof FocusSessionRoute
+  HealthExerciseRoute: typeof HealthExerciseRoute
+  HealthMedicationRoute: typeof HealthMedicationRoute
+  HealthMoodRoute: typeof HealthMoodRoute
+  HealthVitalsRoute: typeof HealthVitalsRoute
+  LearnLessonIdRoute: typeof LearnLessonIdRoute
+  TasksTaskIdRoute: typeof TasksTaskIdRoute
+  AssessmentIndexRoute: typeof AssessmentIndexRoute
+  FocusIndexRoute: typeof FocusIndexRoute
+  HealthIndexRoute: typeof HealthIndexRoute
+  LearnIndexRoute: typeof LearnIndexRoute
+  TasksIndexRoute: typeof TasksIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +325,179 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/doctor': {
+      id: '/doctor'
+      path: '/doctor'
+      fullPath: '/doctor'
+      preLoaderRoute: typeof DoctorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insights': {
+      id: '/insights'
+      path: '/insights'
+      fullPath: '/insights'
+      preLoaderRoute: typeof InsightsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/routines': {
+      id: '/routines'
+      path: '/routines'
+      fullPath: '/routines'
+      preLoaderRoute: typeof RoutinesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/today': {
+      id: '/today'
+      path: '/today'
+      fullPath: '/today'
+      preLoaderRoute: typeof TodayRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assessment/': {
+      id: '/assessment/'
+      path: '/assessment'
+      fullPath: '/assessment/'
+      preLoaderRoute: typeof AssessmentIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assessment/$assessmentId': {
+      id: '/assessment/$assessmentId'
+      path: '/assessment/$assessmentId'
+      fullPath: '/assessment/$assessmentId'
+      preLoaderRoute: typeof AssessmentAssessmentIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/focus/': {
+      id: '/focus/'
+      path: '/focus'
+      fullPath: '/focus/'
+      preLoaderRoute: typeof FocusIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/focus/reset': {
+      id: '/focus/reset'
+      path: '/focus/reset'
+      fullPath: '/focus/reset'
+      preLoaderRoute: typeof FocusResetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/focus/session': {
+      id: '/focus/session'
+      path: '/focus/session'
+      fullPath: '/focus/session'
+      preLoaderRoute: typeof FocusSessionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/health/': {
+      id: '/health/'
+      path: '/health'
+      fullPath: '/health/'
+      preLoaderRoute: typeof HealthIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/health/exercise': {
+      id: '/health/exercise'
+      path: '/health/exercise'
+      fullPath: '/health/exercise'
+      preLoaderRoute: typeof HealthExerciseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/health/medication': {
+      id: '/health/medication'
+      path: '/health/medication'
+      fullPath: '/health/medication'
+      preLoaderRoute: typeof HealthMedicationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/health/mood': {
+      id: '/health/mood'
+      path: '/health/mood'
+      fullPath: '/health/mood'
+      preLoaderRoute: typeof HealthMoodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/health/vitals': {
+      id: '/health/vitals'
+      path: '/health/vitals'
+      fullPath: '/health/vitals'
+      preLoaderRoute: typeof HealthVitalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/learn/': {
+      id: '/learn/'
+      path: '/learn'
+      fullPath: '/learn/'
+      preLoaderRoute: typeof LearnIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/learn/$lessonId': {
+      id: '/learn/$lessonId'
+      path: '/learn/$lessonId'
+      fullPath: '/learn/$lessonId'
+      preLoaderRoute: typeof LearnLessonIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tasks/': {
+      id: '/tasks/'
+      path: '/tasks'
+      fullPath: '/tasks/'
+      preLoaderRoute: typeof TasksIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tasks/$taskId': {
+      id: '/tasks/$taskId'
+      path: '/tasks/$taskId'
+      fullPath: '/tasks/$taskId'
+      preLoaderRoute: typeof TasksTaskIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DoctorRoute: DoctorRoute,
+  InsightsRoute: InsightsRoute,
+  NotificationsRoute: NotificationsRoute,
+  OnboardingRoute: OnboardingRoute,
+  ProfileRoute: ProfileRoute,
+  RoutinesRoute: RoutinesRoute,
+  TodayRoute: TodayRoute,
+  AssessmentAssessmentIdRoute: AssessmentAssessmentIdRoute,
+  FocusResetRoute: FocusResetRoute,
+  FocusSessionRoute: FocusSessionRoute,
+  HealthExerciseRoute: HealthExerciseRoute,
+  HealthMedicationRoute: HealthMedicationRoute,
+  HealthMoodRoute: HealthMoodRoute,
+  HealthVitalsRoute: HealthVitalsRoute,
+  LearnLessonIdRoute: LearnLessonIdRoute,
+  TasksTaskIdRoute: TasksTaskIdRoute,
+  AssessmentIndexRoute: AssessmentIndexRoute,
+  FocusIndexRoute: FocusIndexRoute,
+  HealthIndexRoute: HealthIndexRoute,
+  LearnIndexRoute: LearnIndexRoute,
+  TasksIndexRoute: TasksIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
