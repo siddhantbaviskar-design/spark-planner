@@ -18,6 +18,7 @@ import { Route as AssessmentAssessmentIdRouteImport } from './routes/assessment.
 import { Route as FocusIndexRouteImport } from './routes/focus.index'
 import { Route as FocusResetRouteImport } from './routes/focus.reset'
 import { Route as FocusSessionRouteImport } from './routes/focus.session'
+import { Route as HealthIndexRouteImport } from './routes/health.index'
 import { Route as LearnIndexRouteImport } from './routes/learn.index'
 import { Route as LearnLessonIdRouteImport } from './routes/learn.$lessonId'
 import { Route as TasksIndexRouteImport } from './routes/tasks.index'
@@ -68,6 +69,11 @@ const FocusSessionRoute = FocusSessionRouteImport.update({
   path: '/focus/session',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HealthIndexRoute = HealthIndexRouteImport.update({
+  id: '/health/',
+  path: '/health/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LearnIndexRoute = LearnIndexRouteImport.update({
   id: '/learn/',
   path: '/learn/',
@@ -101,6 +107,7 @@ export interface FileRoutesByFullPath {
   '/tasks/$taskId': typeof TasksTaskIdRoute
   '/assessment/': typeof AssessmentIndexRoute
   '/focus/': typeof FocusIndexRoute
+  '/health/': typeof HealthIndexRoute
   '/learn/': typeof LearnIndexRoute
   '/tasks/': typeof TasksIndexRoute
 }
@@ -116,6 +123,7 @@ export interface FileRoutesByTo {
   '/tasks/$taskId': typeof TasksTaskIdRoute
   '/assessment': typeof AssessmentIndexRoute
   '/focus': typeof FocusIndexRoute
+  '/health': typeof HealthIndexRoute
   '/learn': typeof LearnIndexRoute
   '/tasks': typeof TasksIndexRoute
 }
@@ -132,6 +140,7 @@ export interface FileRoutesById {
   '/tasks/$taskId': typeof TasksTaskIdRoute
   '/assessment/': typeof AssessmentIndexRoute
   '/focus/': typeof FocusIndexRoute
+  '/health/': typeof HealthIndexRoute
   '/learn/': typeof LearnIndexRoute
   '/tasks/': typeof TasksIndexRoute
 }
@@ -149,6 +158,7 @@ export interface FileRouteTypes {
     | '/tasks/$taskId'
     | '/assessment/'
     | '/focus/'
+    | '/health/'
     | '/learn/'
     | '/tasks/'
   fileRoutesByTo: FileRoutesByTo
@@ -164,6 +174,7 @@ export interface FileRouteTypes {
     | '/tasks/$taskId'
     | '/assessment'
     | '/focus'
+    | '/health'
     | '/learn'
     | '/tasks'
   id:
@@ -179,6 +190,7 @@ export interface FileRouteTypes {
     | '/tasks/$taskId'
     | '/assessment/'
     | '/focus/'
+    | '/health/'
     | '/learn/'
     | '/tasks/'
   fileRoutesById: FileRoutesById
@@ -195,6 +207,7 @@ export interface RootRouteChildren {
   TasksTaskIdRoute: typeof TasksTaskIdRoute
   AssessmentIndexRoute: typeof AssessmentIndexRoute
   FocusIndexRoute: typeof FocusIndexRoute
+  HealthIndexRoute: typeof HealthIndexRoute
   LearnIndexRoute: typeof LearnIndexRoute
   TasksIndexRoute: typeof TasksIndexRoute
 }
@@ -264,6 +277,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FocusSessionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/health/': {
+      id: '/health/'
+      path: '/health'
+      fullPath: '/health/'
+      preLoaderRoute: typeof HealthIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/learn/': {
       id: '/learn/'
       path: '/learn'
@@ -307,6 +327,7 @@ const rootRouteChildren: RootRouteChildren = {
   TasksTaskIdRoute: TasksTaskIdRoute,
   AssessmentIndexRoute: AssessmentIndexRoute,
   FocusIndexRoute: FocusIndexRoute,
+  HealthIndexRoute: HealthIndexRoute,
   LearnIndexRoute: LearnIndexRoute,
   TasksIndexRoute: TasksIndexRoute,
 }
