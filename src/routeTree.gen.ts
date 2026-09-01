@@ -19,6 +19,7 @@ import { Route as FocusIndexRouteImport } from './routes/focus.index'
 import { Route as FocusResetRouteImport } from './routes/focus.reset'
 import { Route as FocusSessionRouteImport } from './routes/focus.session'
 import { Route as HealthIndexRouteImport } from './routes/health.index'
+import { Route as HealthMedicationRouteImport } from './routes/health.medication'
 import { Route as HealthVitalsRouteImport } from './routes/health.vitals'
 import { Route as LearnIndexRouteImport } from './routes/learn.index'
 import { Route as LearnLessonIdRouteImport } from './routes/learn.$lessonId'
@@ -75,6 +76,11 @@ const HealthIndexRoute = HealthIndexRouteImport.update({
   path: '/health/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HealthMedicationRoute = HealthMedicationRouteImport.update({
+  id: '/health/medication',
+  path: '/health/medication',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HealthVitalsRoute = HealthVitalsRouteImport.update({
   id: '/health/vitals',
   path: '/health/vitals',
@@ -109,6 +115,7 @@ export interface FileRoutesByFullPath {
   '/assessment/$assessmentId': typeof AssessmentAssessmentIdRoute
   '/focus/reset': typeof FocusResetRoute
   '/focus/session': typeof FocusSessionRoute
+  '/health/medication': typeof HealthMedicationRoute
   '/health/vitals': typeof HealthVitalsRoute
   '/learn/$lessonId': typeof LearnLessonIdRoute
   '/tasks/$taskId': typeof TasksTaskIdRoute
@@ -126,6 +133,7 @@ export interface FileRoutesByTo {
   '/assessment/$assessmentId': typeof AssessmentAssessmentIdRoute
   '/focus/reset': typeof FocusResetRoute
   '/focus/session': typeof FocusSessionRoute
+  '/health/medication': typeof HealthMedicationRoute
   '/health/vitals': typeof HealthVitalsRoute
   '/learn/$lessonId': typeof LearnLessonIdRoute
   '/tasks/$taskId': typeof TasksTaskIdRoute
@@ -144,6 +152,7 @@ export interface FileRoutesById {
   '/assessment/$assessmentId': typeof AssessmentAssessmentIdRoute
   '/focus/reset': typeof FocusResetRoute
   '/focus/session': typeof FocusSessionRoute
+  '/health/medication': typeof HealthMedicationRoute
   '/health/vitals': typeof HealthVitalsRoute
   '/learn/$lessonId': typeof LearnLessonIdRoute
   '/tasks/$taskId': typeof TasksTaskIdRoute
@@ -163,6 +172,7 @@ export interface FileRouteTypes {
     | '/assessment/$assessmentId'
     | '/focus/reset'
     | '/focus/session'
+    | '/health/medication'
     | '/health/vitals'
     | '/learn/$lessonId'
     | '/tasks/$taskId'
@@ -180,6 +190,7 @@ export interface FileRouteTypes {
     | '/assessment/$assessmentId'
     | '/focus/reset'
     | '/focus/session'
+    | '/health/medication'
     | '/health/vitals'
     | '/learn/$lessonId'
     | '/tasks/$taskId'
@@ -197,6 +208,7 @@ export interface FileRouteTypes {
     | '/assessment/$assessmentId'
     | '/focus/reset'
     | '/focus/session'
+    | '/health/medication'
     | '/health/vitals'
     | '/learn/$lessonId'
     | '/tasks/$taskId'
@@ -215,6 +227,7 @@ export interface RootRouteChildren {
   AssessmentAssessmentIdRoute: typeof AssessmentAssessmentIdRoute
   FocusResetRoute: typeof FocusResetRoute
   FocusSessionRoute: typeof FocusSessionRoute
+  HealthMedicationRoute: typeof HealthMedicationRoute
   HealthVitalsRoute: typeof HealthVitalsRoute
   LearnLessonIdRoute: typeof LearnLessonIdRoute
   TasksTaskIdRoute: typeof TasksTaskIdRoute
@@ -297,6 +310,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HealthIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/health/medication': {
+      id: '/health/medication'
+      path: '/health/medication'
+      fullPath: '/health/medication'
+      preLoaderRoute: typeof HealthMedicationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/health/vitals': {
       id: '/health/vitals'
       path: '/health/vitals'
@@ -343,6 +363,7 @@ const rootRouteChildren: RootRouteChildren = {
   AssessmentAssessmentIdRoute: AssessmentAssessmentIdRoute,
   FocusResetRoute: FocusResetRoute,
   FocusSessionRoute: FocusSessionRoute,
+  HealthMedicationRoute: HealthMedicationRoute,
   HealthVitalsRoute: HealthVitalsRoute,
   LearnLessonIdRoute: LearnLessonIdRoute,
   TasksTaskIdRoute: TasksTaskIdRoute,
